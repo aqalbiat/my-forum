@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>User Profile</title>
+    </head>
+    <style>
+        .outer_profile_block {
+            margin-left: 10vw;
+            margin-top: 20vh;
+            width: 80vw;
+            height: 70vh;
+            padding-top: 1vh;
+            padding-left: 0.5vw;
+            border-radius: 20px;
+            background-color: gray;
+        }
+        .inner_profile_block {
+            margin-left: 0;
+            margin-top: 0;
+            padding: 0px, 0px, 0px, 0px;
+            width: 79vw;
+            height: 68vh;
+            border-radius: 15px;
+            background-color: white;
+        }
+        .row_text_block {
+            width: inherit;
+            height: 5vh;
+        }
+        .half_row_block {
+            width: 37vw;
+            height: inherit;
+            display: inline-block;
+        }
+        .rightmost {
+            text-align: right;
+        }
+        .centered {
+            text-align: center;
+        }
+    </style>
+    <body>
+        <div class="outer_profile_block">
+             <div class="inner_profile_block">
+                {{ if .NotLogged }}
+                <div style="width: inherit; height: 5vh;"></div>
+                <div style="width: inherit; height: 4vh; text-align: center;"><h2>ACCESS DENIED!</h2></div>
+                <div style="width: inherit; height: 5vh;"></div>
+                <div style="width: inherit; height: 5hv; text-align: center;">
+                    <a href="http://localhost:8680/">TO MAIN PAGE</a>
+                </div>
+                <div style="width: inherit; height: 5vh;"></div>
+                {{ end }}
+                {{ if .Logged }}
+                    <div style="width: inherit; height: 5vh;"></div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Username:</div>
+                        <div class="half_row_block centered">{{.UserHandler}}</div>
+                    </div>
+                    <div class="row_text_block ">
+                        <div class="half_row_block rightmost">Email of user:</div>
+                        <div class="half_row_block centered">{{.UserEmail}}</div>
+                    </div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Number of posts created by you:</div>
+                        <div class="half_row_block centered">{{.NumberOfCreatedPosts}}</div>
+                    </div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Number of posts favored by you:</div>
+                        <div class="half_row_block centered">{{.NumberOfLikedPosts}}</div>
+                    </div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Number of posts disliked by you:</div>
+                        <div class="half_row_block centered">{{.NumberOfDislikedPosts}}</div>
+                    </div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Number of comments attached by you:</div>
+                        <div class="half_row_block centered">{{.NumberOfCreatedComments}}</div>
+                    </div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Number of comments favored by you:</div>
+                        <div class="half_row_block centered">{{.NumberOfLikedComments}}</div>
+                    </div>
+                    <div class="row_text_block">
+                        <div class="half_row_block rightmost">Number of comments disliked by you:</div>
+                        <div class="half_row_block centered">{{.NumberOfDislikedComments}}</div>
+                    </div>
+                    <div style="width: inherit; height: 5hv; text-align: center;">
+                            <a href="http://localhost:8680/">TO MAIN PAGE</a>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </body>
+</html>

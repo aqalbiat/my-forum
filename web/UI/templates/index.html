@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- load from last -->
+<html>
+    <head>
+        <title> Main Page </title>
+        <link rel="stylesheet" href="http://localhost:8680/static/css/index.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="http://localhost:8680/static/js/build_main.js"></script>
+        <div class="upperhead">
+            <div class="inner_upperhead">
+                {{ if .IsEmpty }} 
+                <a href="http://localhost:8680/login/"> Login </a>||<a href="http://localhost:8680/register/"> Register </a>
+                {{ else }}
+                <a href="http://localhost:8680/profile/?userhandle={{.Username}}">{{.Username}}</a>||<a href="http://localhost:8680/logout/"> Logout </a>
+                {{ end }}
+            </div>
+        </div>
+        <div class="choose_box_outer">
+            <div class="choose_box_inner">
+                <div class="text_box pos1" onclick="LoadMainPage()"> Main Page </div>
+                <div class="text_box pos2" onclick="LoadCategories()"> Categories </div>
+                <div class="text_box pos3" onclick="LoadSearchings()"> Search </div>
+                <div class="text_box pos4" onclick="LoadCreatePost()"> Create Post </div>
+                <div class="text_box pos5" onclick="LoadAboutUs()"> About Us </div>
+            </div>
+        </div>
+        <div class="background_workflow_outer" id="shell">
+            <div class="background_workflow_inner" id="loading_box">
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <p> Officiis, laboriosam cupiditate similique obcaecati cumque incidunt, dicta nihil vero, magni earum qui? </p>  
+                <p> Corrupti nobis quisquam velit nesciunt delectus quis tempora eius. </p>
+            </div>
+        </div>
+    </body>
+</html>

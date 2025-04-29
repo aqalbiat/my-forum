@@ -1,0 +1,27 @@
+
+/* merged from 2024-07-13 */
+
+.error_courner {
+    margin-left: 30vw;
+    margin-top: 60px;
+    width: calc(100vw * 0.4);
+    height: 300px;
+    background-color: rgb(183, 181, 181);
+    border-radius: 25px;
+}
+
+.inner_box {
+    transform: translateY(10px);
+    margin-left: 10px;
+    width: calc(40vw - 20px);
+    height: 280px;
+    border-radius: 18px;
+    background-color: white;
+}
+
+.text_box {
+    padding-top: 20px;
+    text-align: center;
+    margin-left: 10vw;
+    width: 20vw;
+}

@@ -1,0 +1,72 @@
+<html>
+    <!-- For this page: {height = 60vh - 12px}  AND  {width = 50vw - 12px} -->
+     <style>
+        .article_wrapper {
+            width: 46vw;
+            height: auto;
+        }
+        .topic_box {
+            color: gray;
+            width: 46vw;
+            height: 4vh;
+            text-align: center;
+        }
+        .author_line {
+            color: gray;
+            margin-top: 3vh;
+            width: inherit;
+            height: 4vh;
+            padding-left: 3vw;
+        }
+        .content {
+            width: inherit;
+            height: auto;
+            padding-left: 3vw;
+        }
+        .category_name {
+            display: inline-block;
+            width: 15vw;
+            height: 4vh;
+            text-align: center;
+        }
+        .bottom_swapper_line {
+            width: inherit;
+            height: 4vh;
+            text-align: center;
+        }
+        .swapper_inner_blocks {
+            width: 4vw;
+            height: inherit;
+            display: inline-block;
+        }
+        .arrow_lines {
+            opacity: 1;
+        }
+        .arrow_lines:hover {
+            text-decoration: underline teal;
+            cursor: pointer;
+        }
+        .button_page {
+            cursor: pointer;
+            margin-left: 42vw;
+        }
+     </style>
+     {{ range .ArticlesFace }}
+        <div id="{{.PostId}}" class="article_wrapper" onmouseover="LoadPosts()">
+            <div class="topic_box">{{.Title}}</div>
+            <div class="content">{{.Content}}.....</div>
+            <div class="author_line">Author: {{.UserNick}}</div>
+            <button class="button_page" id="{{.PostId}}">READ MORE</button>
+            <div class="topic_box"> Categories: </div>
+            {{ range .Categories }} 
+            <div class="category_name">{{.}}</div>
+            {{ end }}
+        </div>
+        <hr style="width: 46vw;">  
+    {{end}}  
+    <div class="bottom_swapper_line">
+        <div class="swapper_inner_blocks arrow_lines" onclick="LoadLeftForMainPage()">&larr;</div>
+        <div class="swapper_inner_blocks" id="page_number">{{.PageNumber}}</div>
+        <div class="swapper_inner_blocks arrow_lines" onclick="LoadRightForMainPage()">&rarr;</div>
+    </div>
+</html>

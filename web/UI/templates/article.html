@@ -1,0 +1,198 @@
+<html>
+    <style>
+        .article_wrapper {
+            width: 46vw;
+            height: auto;
+            overflow-x: hidden;
+        }
+        .topic_box {
+            color: gray;
+            width: 46vw;
+            height: 4vh;
+            text-align: center;
+        }
+        .author_line {
+            color: gray;
+            margin-top: 3vh;
+            width: inherit;
+            height: 4vh;
+            padding-left: 3vw;
+        }
+        .content {
+            width: inherit;
+            height: auto;
+        }
+        .category_name {
+            display: inline-block;
+            width: 15vw;
+            height: 4vh;
+            text-align: center;
+        }
+        .button_page {
+            cursor: pointer;
+            margin-left: 42vw;
+            margin-top: auto;
+            margin-bottom: 4vh;
+        }
+        .back_button { 
+            display: inline-block; 
+            margin-left: 40vw;
+            padding: 10px 20px; 
+            background-color: gray; 
+            color: rgb(255, 255, 255); 
+            text-decoration: none; 
+            border-radius: 8px; 
+        } 
+        .back_button:hover { 
+            background-color: #4c5258; 
+            cursor: pointer;
+        } 
+        .likes_n_dislikes_container {
+            width: inherit;
+            height: 4vh;
+        }
+        .likes{
+            background-color: white;
+            display: inline-block;
+        }
+        .dislikes{
+            background-color: white;
+            display: inline-block;
+        }
+        .counting_numbers {
+            height: inherit;
+            display: inline-block;
+        }
+        .likes:hover{
+            background-color: rgb(41, 177, 41); 
+            cursor: pointer;
+        }
+        .dislikes:hover{
+            background-color: red; 
+            cursor: pointer;
+        }
+        .comment_container {
+            width: 46vw;
+            height: auto;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        .comment_header {
+            width: inherit;
+            height: 2vh;
+        }
+        .comment_footer {
+            width: inherit;
+            height: 2vh;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .comment_printer {
+            width: 46vw;
+            height: auto;
+        }
+        .ghosting_block {
+            opacity: 0;
+        }
+        .comment_author_block {
+            width: inherit;
+            height: 3vh;
+            padding-left: 0.5vw;
+            color: gray;
+        }
+        .comment_text_block {
+            width: inherit;
+            height: auto;
+            padding-left: 1vw;
+        }
+    </style>
+    {{ range . }}
+    <div id="{{.PostId}}" class="article_wrapper">
+        <div class="topic_box">{{.Title}}</div>
+        <div class="content">{{.Content}}</div>
+        <div class="author_line">Author: {{.UserNick}}</div>
+        <div class="topic_box"> Categories: </div>
+        {{ range .Categories }} 
+        <div class="category_name">{{.}}</div>
+        {{ end }}
+    </div>
+    <div style="width: inherit; height: 4vh;"></div>
+    {{ if .IsNeutral }}
+    <div class="likes_n_dislikes_container">
+        <div id="likescount" class="counting_numbers">{{ .Likes }}</div>
+        <button class="likes" onclick="LikeButton()" data-is-checked="false">&#128077;</button>
+        <div id="dislikescount" class="counting_numbers">{{ .Dislikes }}</div>
+        <button class="dislikes" onclick="DislikeButton()" data-is-checked="false">&#128078;</button>
+    </div>
+    {{ end }}
+    {{ if .IsGreen }}
+    <div class="likes_n_dislikes_container">
+        <div id="likescount" class="counting_numbers">{{ .Likes }}</div>
+        <button class="likes" onclick="LikeButton()" data-is-checked="true" style="background-color: green;">&#128077;</button>
+        <div id="dislikescount" class="counting_numbers">{{ .Dislikes }}</div>
+        <button class="dislikes" onclick="DislikeButton()" data-is-checked="false">&#128078;</button>
+    </div>
+    {{ end }}
+    {{ if .IsRed }}
+    <div class="likes_n_dislikes_container">
+        <div id="likescount" class="counting_numbers">{{ .Likes }}</div>
+        <button class="likes" onclick="LikeButton()" data-is-checked="false">&#128077;</button>
+        <div id="dislikescount" class="counting_numbers">{{ .Dislikes }}</div>
+        <button class="dislikes" onclick="DislikeButton()" data-is-checked="true" style="background-color: red;">&#128078;</button>
+    </div>
+    {{ end }}
+    <button class="back_button" onclick="HistoryBack()">Back</button> 
+    <div style="width: inherit; height: 4vh;"></div>
+    <div class="comment_container">
+        <div class="comment_header"> <h3> Post your comment </h3> </div>
+        <div style="width: inherit; height: 3vh;"></div>
+        <textarea name="comment_field" id="user_comment" style="width: 40vw; height: 8vh;"></textarea>
+        <div style="width: inherit; height: 3vh;"></div>
+        <div class="comment_footer"><button class="back_button" onclick="SendComment()">Post</button></div>
+        <div style="width: inherit; height: 4vh;"></div>
+    </div>
+    <div id="comments_list" onmouseover="AddCommentFeedbackListeners()">
+        <div id="copycat_model" class="comment_printer ghosting_block">
+            <div class="comment_author_block">Author of the block</div>
+            <div class="comment_text_block">Comment produced by user</div>
+            <div class="likes_n_dislikes_container">
+                <div class="counting_numbers">0</div>
+                <button class="likes" touched="false">&#128077;</button>
+                <div class="counting_numbers">0</div>
+                <button class="dislikes" touched="false">&#128078;</button>
+            </div>
+        </div>
+        {{ range .ListOfComments }}
+        <div id="{{.CommentId}}" class="comment_printer">
+            <div class="comment_author_block">{{ .Author }}</div>
+            <div class="comment_text_block">{{ .Contain }}</div>
+            {{ if .IsNeutral }}
+            <div class="likes_n_dislikes_container">
+                <div class="counting_numbers">{{.Likes}}</div>
+                <button class="likes" touched="false">&#128077;</button>
+                <div class="counting_numbers">{{.Dislikes}}</div>
+                <button class="dislikes" touched="false">&#128078;</button>
+            </div>
+            {{ end }}
+            {{ if .IsRed }}
+            <div class="likes_n_dislikes_container">
+                <div class="counting_numbers">{{.Likes}}</div>
+                <button class="likes" touched="false">&#128077;</button>
+                <div class="counting_numbers">{{.Dislikes}}</div>
+                <button class="dislikes" touched="true" style="background-color: red;">&#128078;</button>
+            </div>
+            {{ end }}
+            {{ if .IsGreen }}
+            <div class="likes_n_dislikes_container">
+                <div class="counting_numbers">{{.Likes}}</div>
+                <button class="likes" touched="true" style="background-color: green;">&#128077;</button>
+                <div class="counting_numbers">{{.Dislikes}}</div>
+                <button class="dislikes" touched="false">&#128078;</button>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+</html>

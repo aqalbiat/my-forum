@@ -1,0 +1,61 @@
+<html>
+    <!-- Take the width of the working panel as 46wv -->
+    <style>
+        .top_centered_message {
+            width: 46vw;
+            height: 4vh;
+            text-align: center;
+        }
+        .article_wrapper {
+            width: 46vw;
+            height: auto;
+        }
+        .topic_box {
+            color: gray;
+            width: 46vw;
+            height: 4vh;
+            text-align: center;
+        }
+        .content {
+            width: inherit;
+            height: auto;
+            padding-left: 3vw;
+        }
+        .author_line {
+            color: gray;
+            margin-top: 3vh;
+            width: inherit;
+            height: 4vh;
+            padding-left: 3vw;
+        }
+        .button_page {
+            cursor: pointer;
+            margin-left: 42vw;
+        }
+        .category_name {
+            display: inline-block;
+            width: 15vw;
+            height: 4vh;
+            text-align: center;
+        }
+    </style>
+    {{ if .NoResults }}
+        <div class="top_centered_message"> <h1> NO RESULTS FOUND </h1> </div>
+    {{ end }}
+    {{ if .HaveResults }}
+        <div class="top_centered_message"> NUMBER OF RESULTS FOUND <b>{{.NumberOfResults}}</b> </div>
+        {{ range .Articles }}
+        <div id="{{.PostId}}" class="article_wrapper" onmouseover="UploadReverseFilterButtons()">
+            <div class="topic_box">{{.Title}}</div>
+            <div class="content">{{.Content}}</div>
+            <div class="author_line">Author: {{.UserNick}}</div>
+            <button class="button_page" id="{{.PostId}}">READ MORE</button>
+            <div class="topic_box"> Categories: </div>
+            {{ range .Categories }} 
+            <div class="category_name">{{.}}</div>
+            {{ end }}
+        </div>
+        <hr style="width: 46vw;">
+        {{ end }}
+    {{ end }}
+</html>

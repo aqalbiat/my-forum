@@ -1,0 +1,98 @@
+<html>
+    <!-- For this page: {height = 60vh - 12px}  AND  {width = 50vw - 12px} -->
+    <style>
+        .filters_box {
+            width: 46vw;
+            height: auto;
+        }
+        .words_line {
+            width: inherit;
+            height: 5vh;
+        }
+        .half_block {
+            width: 22vw;
+            display: inline-block;
+        }
+        .for_separator {
+            width: calc(45vw - 12px);
+            color: gray;
+            border-radius: 1px;
+        }
+        .categories_block {
+            width: calc(45vw - 12px);
+            height: 30vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .move_right {
+            transform: translateX(2vw);
+        }
+        .categories_header {
+            width: inherit;
+            height: 6vh;
+            text-align: center;
+        }
+        .category_theme {
+            padding-left: 14vw;
+            width: inherit;
+            height: 6vh;
+            text-align: left;
+        }
+        .checks {
+            opacity: 1;
+        }
+    </style>
+    <div class="filters_box move_right"> 
+        <div style="width: inherit; height: 5vh; text-align: center;"><h2>Searching Filters</h2></div>
+        <div class="words_line">
+            <label for="title-keywords" class="half_block">Words that must present in title (with space in beetwen them)</label>
+            <input type="text" id="title-keywords" class="half_block">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+        <div class="words_line">
+            <label for="content-keywords" class="half_block">Words that must present in content (with space in beetwen them)</label>
+            <input type="text" id="content-keywords" class="half_block">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+        <div class="words_line">
+            <label for="max-likes" class="half_block">Number of maximum likes</label>
+            <input type="number" max="1000000000" min="0" id="max-likes" class="half_block" value="1000000000">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+        <div class="words_line">
+            <label for="min-likes" class="half_block">Number of minimum likes</label>
+            <input type="number" max="1000000000" min="0" id="min-likes" class="half_block" value="0">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+        <div class="words_line">
+            <label for="max-disses" class="half_block">Number of maximum dislikes</label>
+            <input type="number" max="1000000000" min="0" id="max-disses" class="half_block" value="1000000000">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+        <div class="words_line">
+            <label for="min-disses" class="half_block">Number of minimum dislikes</label>
+            <input type="number" max="1000000000" min="0" id="min-disses" class="half_block" value="0">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+        <div class="words_line">
+            <label for="has-comments" class="half_block">Must have some comments</label>
+            <input type="checkbox" id="has-comments" class="half_block">
+        </div>
+        <div style="width: inherit; height: 2vh; background-color: white;"></div>
+    </div>
+    <hr class="for_separator">
+    <div class="categories_block move_right">
+        <div class="categories_header">Categories List</div>
+        {{ range .Categories }}
+        <div class="categories_header">{{ .Letter }}</div>
+        {{ range .Topics }}
+        <div class="category_theme"><input type="checkbox" id="{{.ThemeId}}" name="{{.TopicName}}" class="checks"><label for="{{.ThemeId}}">{{.TopicName}}</label></div>
+        {{ end }}
+        {{ end }}
+    </div>
+    <hr class="for_separator">
+    <div style="width: inherit; text-align: center;">
+            <button style="cursor: pointer;" onclick="LoadSearchedPosts()">Search</button>
+    </div>
+    <div style="width: inherit; height: 2vh; background-color: white;"></div>
+</html>

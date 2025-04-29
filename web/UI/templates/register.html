@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Registration </title>
+        <link rel="stylesheet" href="http://localhost:8680/static/css/logger.css">
+    </head>
+    <body>
+       <script src="http://localhost:8680/static/js/build_logger.js"></script>
+       <div class="outer_box">
+        <div class="inner_box">
+            <table class="table_param">
+                <tr>
+                    <td class="tr_name"> <label for="username"> Enter your username: </label> </td>
+                    <td> <input type="text" id="username" name="username" required minlength="4" maxlength="30" size="32"> </td>
+                </tr>
+                <tr>
+                    <td class="tr_name"> <label for="email"> Enter your email: </label> </td>
+                    <td> <input type="text" name="email" id="email" required minlength="4" maxlength="30" size="32"> </td>  
+                </tr>
+                <tr>
+                    <td class="tr_name"> <label for="password"> Enter your password: </label> </td>
+                    <td> <input type="password" name="password" id="pass_one" required minlength="8" maxlength="30" size="32"> </td>
+                </tr>
+                <tr>
+                    <td class="tr_name"> <label for="rep_password"> Retype your password: </label> </td>
+                    <td> <input type="password" name="rep_password" id="pass_two" required minlength="8" maxlength="30" size="32"> </td>
+                </tr>
+            </table>
+            <div class="send_box_place"> 
+                <button type="button" id="form_submit" onclick="checkFormValues()"> Submit </button>
+            </div>
+        </div>
+       </div> 
+    </body>
+</html>

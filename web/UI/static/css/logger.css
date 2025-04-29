@@ -1,0 +1,46 @@
+
+/* merged from 2024-07-13 */
+
+.outer_box {
+    margin-top: 100px;
+    margin-left: 30vw;
+    width: 40vw;
+    background-color: gray;
+    border-radius: 25px;
+    height: 300px;
+}
+
+.inner_box {
+    transform: translateY(10px) translateX(10px);
+    width: calc(40vw - 20px);
+    height: 280px;
+    border-radius: 17px;
+    background-color: white;
+    text-align: center;
+}
+
+.ghost_box {
+    display: none;
+    opacity: 0;
+}
+
+.tr_name {
+    text-align: right;
+}
+
+.table_param {
+    transform: translateX(10px) translateY(10px);
+    width: calc(40vw - 40px);
+    height: 220px;
+}
+
+.logger_param {
+    transform: translateX(10px) translateY(10px);
+    width: calc(40vw - 40px);
+    height: 170px;
+}
+
+.send_box_place {
+    transform: translateX(30px) translateY(20px);
+    width: calc(40vw - 80px);
+}

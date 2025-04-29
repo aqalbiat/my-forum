@@ -1,0 +1,115 @@
+
+/* merged from 2024-07-13 */
+
+.choose_box_outer {
+    margin-top: 60px;
+    margin-left: 20vw;
+    width: 60vw;
+    height: 70px;
+    border-radius: 25px;
+    background-color: gray;
+}
+
+.choose_box_inner {
+    transform: translateX(5px) translateY(5px);
+    width: calc(60vw - 10px);
+    height: 60px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.text_box {
+    width: calc((60vw - 20px) / 5);
+    height: 40px;
+    background-color: white;
+    text-align: center;
+    border-radius: 15px;
+    font-size: large;
+}
+
+.text_box:hover {
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+.pos1 {
+    transform: translateX(5px) translateY(10px);
+}
+
+.pos2 {
+    transform: translateY(-30px) translateX(calc(5px + (60vw - 20px) / 5));
+}
+
+.pos3 {
+    transform: translateY(-70px) translateX(calc(5px + 2 * ((60vw - 20px) / 5)));
+}
+
+.pos4 {
+    transform: translateY(-110px) translateX(calc(5px + 3 * ((60vw - 20px) / 5)));
+}
+
+.pos5 {
+    transform: translateY(-150px) translateX(calc(5px + 4 * ((60vw - 20px) / 5)));
+}
+
+.upperhead {
+    width: 100vw;
+    height: 5vh;
+}
+
+.inner_upperhead {
+    width: 30vw;
+    height: 5vh;
+    margin-left: 70vw;
+    text-align: center;
+}
+
+.inner_upperhead_block1 {
+    width: 18vw;
+    height: inherit;
+    text-align: center;
+}
+
+.inner_upperhead_block2 {
+    width: 2vw;
+    height: inherit;
+    left: 0px;
+    position: sticky;
+    text-align: center;
+}
+
+.inner_upperhead_block3 {
+    width: 10vw;
+    height: inherit;
+    left: 0px;
+    position: sticky;
+    text-align: center; 
+}
+
+.background_workflow_outer {
+    width: 50vw;
+    height: 60vh;
+    margin-left: 25vw;
+    margin-top: 5vh;
+    padding-top: 6px;
+    padding-left: 6px;
+    background-color: gray;
+    border-radius: 20px;
+    border-width: 0px;
+}
+
+.background_workflow_inner {
+    width: calc(50vw - 12px);
+    height: calc(60vh - 12px);
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 6px;
+    padding-top: 6px;
+    background-color: white;
+    border-radius: 14px;
+    border-width: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

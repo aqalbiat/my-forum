@@ -1,0 +1,84 @@
+<html>
+    <!-- For this page: {height = 60vh - 12px}  AND  {width = 50vw - 12px} -->
+    <!-- from last -->
+    <style>
+        .header_line {
+            height: 10vh;
+            width: calc(50vw - 12px);
+            opacity: 100%;
+            text-align: center;
+        }
+        .title_text {
+            height: inherit;
+            width: 10vw;
+            padding-top: 4px;
+            text-align: center;
+            display: inline-block;
+        }
+        .title_input {
+            height: inherit;
+            width: calc(40vw - 28px);
+            padding-top: 4px;
+            align-items: center;
+            text-align: center;
+            display: inline-block;
+        }
+        .categories_block {
+            width: calc(45vw - 12px);
+            height: 30vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .categories_header {
+            width: inherit;
+            height: 6vh;
+            text-align: center;
+        }
+        .category_theme {
+            padding-left: 14vw;
+            width: inherit;
+            height: 6vh;
+            text-align: left;
+        }
+        .content_start {
+            height: 5vh;
+            width: inherit;
+            text-align: center;
+        }
+        .content_input {
+            height: calc(40vh - 24px);
+            width: calc(45vw - 12px);
+        }
+        .checks {
+            opacity: 1;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .move_right {
+            transform: translateX(2vw);
+        }
+        .for_separator {
+            width: calc(45vw - 12px);
+            color: gray;
+            border-radius: 1px;
+        }
+    </style>
+    <div class="header_line">
+        <div class="title_text">Title of article:</div><div class="title_input"><input size="60" type="text" id="title"></div>
+    </div>
+    <hr class="for_separator">
+    <div class="categories_block move_right">
+        <div class="categories_header">Categories List</div>
+        {{ range .Categories }}
+        <div class="categories_header">{{ .Letter }}</div>
+        {{ range .Topics }}
+        <div class="category_theme"><input type="checkbox" id="{{.ThemeId}}" name="{{.TopicName}}" class="checks"><label for="{{.ThemeId}}">{{.TopicName}}</label></div>
+        {{ end }}
+        {{ end }}
+    </div>
+    <hr class="for_separator">
+    <div class="content_start"> Content </div>
+    <textarea name="content" id="article" class="content_input move_right"></textarea>
+    <div class="header_line"><button onclick="SubmitArticle()">Submit</button></div>
+</html>

@@ -1,0 +1,51 @@
+<html>
+    <!-- For this page: {height = 60vh - 12px}  AND  {width = 50vw - 12px} -->
+    <!-- merged from 2024-07-13 -->
+    <style>
+        .head_of_letter {
+            width: inherit;
+            height: 5vh;
+            text-align: center;
+        }
+        .class_category_names {
+            padding-left: 18vw;
+            width: calc(46vw - 12px);
+            height: 4hv;
+        }
+        .class_category_names:hover {
+            text-decoration: underline teal;
+            cursor: pointer;
+        }
+        .bottom_line {
+            width: inherit;
+            height: 4hv;
+            text-align: center;
+        }
+        .inner_blocks {
+            width: 4vw;
+            height: inherit;
+            display: inline-block;
+        }
+        .arrows {
+            opacity: 1;
+        }
+        .arrows:hover {
+            text-decoration: underline teal;
+            cursor: pointer;
+        }
+        .letter {
+            opacity: 1;
+        }
+    </style>
+    <div onmouseover="CreateCategoryLoaders()"> 
+        <div class="head_of_letter">Letter {{ .Letter }}</div>
+        {{ range .Topics }}
+        <p class="class_category_names">{{ .TopicName }}</p>
+        {{ end }}
+        <div class="bottom_line">
+            <div class="inner_blocks arrows" onclick="GotoLeft()">&larr;</div>
+            <div class="inner_blocks letter" id="{{.Letter}}">{{ .Letter }}</div>
+            <div class="inner_blocks arrows" onclick="GotoRight()">&rarr;</div>
+        </div>
+    </div>
+</html>

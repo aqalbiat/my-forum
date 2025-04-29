@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Signin process</title>
+    </head>
+    <style>
+        .outer_profile_block {
+            margin-left: 10vw;
+            margin-top: 20vh;
+            width: 80vw;
+            height: 36vh;
+            padding-top: 1vh;
+            padding-left: 0.5vw;
+            border-radius: 20px;
+            background-color: gray;
+        }
+        .inner_profile_block {
+            margin-left: 0;
+            margin-top: 0;
+            padding: 0px, 0px, 0px, 0px;
+            width: 79vw;
+            height: 34vh;
+            border-radius: 15px;
+            background-color: white;
+        }
+        .row_text_block {
+            width: inherit;
+            height: 5vh;
+            text-align: center;
+        }
+    </style>
+    <body>
+        <div class="outer_profile_block">
+            <div class="inner_profile_block">
+                <div class="row_text_block"></div>
+                <div class="row_text_block"><h2>{{.Message}}</h2></div>
+                <div class="row_text_block"></div>
+                <div class="row_text_block"><a href="http://localhost:8680/">GO TO MAIN</a></div>
+                <div class="row_text_block"></div>
+            </div>
+        </div>
+    </body>
+</html>
